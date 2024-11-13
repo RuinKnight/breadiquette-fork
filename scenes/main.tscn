@@ -10,7 +10,7 @@
 
 [node name="Player" parent="." instance=ExtResource("1_oqik1")]
 unique_name_in_owner = true
-position = Vector2(576, 300)
+position = Vector2(576, 236)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
