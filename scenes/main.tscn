@@ -12,6 +12,9 @@
 unique_name_in_owner = true
 position = Vector2(576, 300)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueUI" parent="CanvasLayer" instance=ExtResource("3_7fnm8")]
