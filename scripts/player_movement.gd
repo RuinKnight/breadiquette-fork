@@ -8,6 +8,8 @@ enum PlayerState {
 }
 var state = PlayerState.UNLOCKED
 
+func _process(delta: float) -> void:
+	$Eyes.position = 0.01 * (get_viewport().get_mouse_position() - Vector2(512, 328))
 
 func _physics_process(delta: float) -> void:
 	# MOVE the player
