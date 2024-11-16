@@ -33,10 +33,10 @@ DialogueComponent = NodePath("DialogueComponent")
 character_name = "Mr. Breadly (isn't deadly)"
 character_base_speed = 0.024
 speech_noise = ExtResource("5_03r3t")
-text = Array[String](["Good morning, Breadicus!", "The Boss wants you to meet in his office at 8:30am.", "A mission assignment, I think.", "Well, I gotta go now."])
+text = Array[String](["Good morning, Breadicus!", "The Boss wants you to meet in his office at 8:30am.", "A mission assignment, I think.", "Well, I gotta go now.", "Why you gotta be so rude? Don't you know that I'm bread toooo?"])
 options = Array[Dictionary]([{
 "Good morning!": 1,
-"Hello!": 1,
+"I hate you.": 4,
 "What's up?": 1
 }, {
 "Okay.": 3,
@@ -44,4 +44,7 @@ options = Array[Dictionary]([{
 }, {
 "I see.": 3,
 "What kind of mission?": 3
-}, {}])
+}, {}, {}])
+metadata = Array[Dictionary]([{}, {}, {}, {}, {
+"strike": 1
+}])

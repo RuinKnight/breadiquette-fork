@@ -20,11 +20,10 @@ var state = MrBreadlyState.IDLE:
 
 
 func _on_interactable_component_interacted() -> void:
-	print("bowow?")
 	# Make sure that there's a dialogue object to use.
 	if not DialogueComponent:
 		return
-	var state = MrBreadlyState.YAP
+	state = MrBreadlyState.YAP
 	# Start dialogue
 	await Globals.start_dialogue(DialogueComponent.current_object, 0)
 	state = MrBreadlyState.IDLE

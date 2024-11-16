@@ -27,12 +27,13 @@ var current_object = Dialogue.DialogueObject.new()
 @export_multiline var text: Array[String]
 # Responses corresponding to the text array
 @export var options: Array[Dictionary]
+@export var metadata: Array[Dictionary]
 
 
 func _ready() -> void:
-	var item_array_size = current_object.item_array.size()
 	for i in text.size():
 		var working_item = Dialogue.DialogueItem.new()
 		working_item.text = text[i]
 		working_item.options = options[i]
+		working_item.metadata = metadata[i]
 		current_object.item_array.append(working_item)

@@ -16,5 +16,4 @@ func _input(event):
 			if distance < closest.global_position.distance_to(global_position):
 				closest = area
 		# Begin interaction
-		print("what now?")
 		closest.interacted.emit()
