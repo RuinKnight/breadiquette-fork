@@ -7,7 +7,6 @@ enum DialogueState {
 	ACTIVE,
 	INACTIVE,
 }
-
 var working_dialogue: Dialogue.DialogueObject
 var working_text: int
 var state = DialogueState.INACTIVE:
@@ -74,6 +73,8 @@ func action_select(button: int):
 	working_text = (
 		working_dialogue.item_array[working_text].options[working_dialogue.item_array[working_text].options.keys()[button]]
 	)
-	if working_dialogue.item_array[working_text].metadata.get("strike"):
+	print()
+	if working_dialogue.item_array[working_text].metadata.get("strike") or %Speech.visible_ratio != 1:
+		working_text = working_dialogue.annoy_text
 		Globals.etiquette_strikes += 1
 	update_dialogue()

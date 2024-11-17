@@ -50,6 +50,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_akc1x")
+speed = 14000
 
 [node name="Interact" type="Area2D" parent="."]
 collision_layer = 2

@@ -28,6 +28,12 @@ var current_object = Dialogue.DialogueObject.new()
 # Responses corresponding to the text array
 @export var options: Array[Dictionary]
 @export var metadata: Array[Dictionary]
+@export_group("Miscellaneous")
+@export var annoy_text: int:
+	get:
+		return current_object.annoy_text
+	set(value):
+		current_object.annoy_text = value
 
 
 func _ready() -> void:

@@ -8,6 +8,7 @@ class DialogueObject:
 	var char_base_speed: float
 	var speech_noise: AudioStream
 	var item_array: Array[DialogueItem]
+	var annoy_text: int
 
 # One page of dialogue
 class DialogueItem:
