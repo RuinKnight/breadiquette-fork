@@ -1,7 +1,7 @@
 extends Area2D
 
-## Interaction Engine
 
+## Interaction Engine
 func _input(event):
 	# Check for input
 	if event.is_action_pressed("interact"):

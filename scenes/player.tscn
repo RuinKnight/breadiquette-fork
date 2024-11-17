@@ -5,6 +5,9 @@
 [ext_resource type="Script" path="res://scripts/player_interact.gd" id="3_dqapd"]
 [ext_resource type="Texture2D" uid="uid://k1vdnwj8fw0c" path="res://assets/art/entities/bread_guy_eyes.png" id="4_i0lx4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ngne"]
+size = Vector2(40, 40)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbc38"]
 size = Vector2(40, 20)
 
@@ -44,12 +47,18 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ngne"]
-size = Vector2(40, 40)
-
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_akc1x")
+
+[node name="Interact" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("3_dqapd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+shape = SubResource("RectangleShape2D_6ngne")
+debug_color = Color(0, 0.645465, 0.259487, 0.42)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
@@ -60,14 +69,6 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_68l8u")
 autoplay = "default"
 frame_progress = 0.565249
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 8
-script = ExtResource("3_dqapd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_6ngne")
 
 [node name="Eyes" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)

@@ -69,8 +69,7 @@ offset_bottom = 260.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
-theme_override_constants/separation = 16
-alignment = 1
+theme_override_constants/separation = 21
 vertical = true
 
 [node name="Button0" type="Button" parent="Options"]
