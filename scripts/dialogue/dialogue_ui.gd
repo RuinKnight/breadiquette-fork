@@ -35,36 +35,35 @@ func update_dialogue():
 		return
 	if not working_dialogue.item_array.size():
 		return
+	%Options.visible = false
 	%Label.text = working_dialogue.char_name
 	state = DialogueState.ACTIVE
-	%Options.visible = false
-
-	# Animates the text, so it appears more smooth
-	await speak(working_dialogue.item_array[working_text].text, working_dialogue.char_base_speed)
-
-	# set up the BUTTONS
+	%Speech.text = working_dialogue.item_array[working_text].text
+	
 	var working_options = working_dialogue.item_array[working_text].options.keys()
 	for i in button_array:
 		i.visible = false
-
-	if working_options.size() == 0:
-		state = DialogueState.INACTIVE
-
 	for i in working_options.size():
 		button_array[i].text = working_options[i]
 		button_array[i].visible = true
 	%Options.visible = true
+	
+	# Animates the text, so it appears more smooth
+	await speak(working_text, working_dialogue.char_base_speed)
+	if working_options.size() == 0:
+		state = DialogueState.INACTIVE
+	
 
 
-func speak(speech_text: String, speed: float):
+func speak(start_text: int, speed: float):
 	if speed == 0.0:
-		%Speech.text = speech_text
-		return
+		%Speech.visible_characters = -1
 
-	for i in (speech_text.length() + 1):
-		%Speech.text = speech_text.left(i)
-		%SpeechNoise.pitch_scale = randf_range(0.75,1.25)
-		%SpeechNoise.play()
+	for i in %Speech.text.length() + 1:
+		if working_text != start_text:
+			return
+		%Speech.visible_characters = i
+		%SpeechNoise.pitch_scale = randf_range(0.75,1.25); %SpeechNoise.play()
 		await get_tree().create_timer(speed).timeout
 
 
