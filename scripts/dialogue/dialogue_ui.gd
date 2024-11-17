@@ -74,7 +74,9 @@ func action_select(button: int):
 		working_dialogue.item_array[working_text].options[working_dialogue.item_array[working_text].options.keys()[button]]
 	)
 	print()
-	if working_dialogue.item_array[working_text].metadata.get("strike") or %Speech.visible_ratio != 1:
-		working_text = working_dialogue.annoy_text
+	if working_dialogue.item_array[working_text].metadata.get("strike"):
 		Globals.etiquette_strikes += 1
+	elif %Speech.visible_ratio != 1:
+		Globals.etiquette_strikes += 1
+		working_text = working_dialogue.annoy_text
 	update_dialogue()
