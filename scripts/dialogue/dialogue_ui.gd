@@ -75,6 +75,6 @@ func action_select(button: int):
 	working_text = (
 		working_dialogue.item_array[working_text].options[working_dialogue.item_array[working_text].options.keys()[button]]
 	)
-	if working_dialogue.item_array[working_text].metadata["strike"]:
+	if working_dialogue.item_array[working_text].metadata.get("strike"):
 		Globals.etiquette_strikes += 1
 	update_dialogue()
