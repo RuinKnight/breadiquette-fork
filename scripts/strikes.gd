@@ -14,3 +14,5 @@ func _process(delta: float) -> void:
 		text = "Strikes: [x] [ ] [ ]"
 	elif Globals.etiquette_strikes == 2:
 		text = "Strikes: [x] [x] [ ]"
+	elif Globals.etiquette_strikes == 3:
+		text = "Strikes: [x] [x] [x]"
