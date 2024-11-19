@@ -27,15 +27,17 @@ git config --global user.email your@email.com
 8. Click "Generate Token"
 9. Copy the token to somewhere safe
 ### Project Setup
-1. Reopen the terminal (assuming you closed it)
-2. Go to the directory where you want to setup your project, using the cd command (ie: cd Documents/godot/projects)
-3. Run the following command:
+1. Fork the Repo (there's a fork button on this page)
+2. In your new repo, copy the link to your fork of the project (located underneath the green 'code' button)
+3. Reopen the terminal (assuming you closed it)
+4. Go to the directory where you want to setup your project, using the cd command (ie: cd Documents/godot/projects)
+5. Run the following command, with your repo's link (pasting may be control+shift+v, depending on your terminal):
 ```shell
-git clone https://github.com/bf-bonkus/fbla-game-2024.git
+git clone (link to your repo)
 ```
-4. Open Godot and press Import
-5. Go to where you downloaded the project and double click on project.godot
-6. Press Import & Edit
+5. Open Godot and press Import
+6. Go to where you downloaded the project and double click on project.godot
+7. Press Import & Edit
 ### Godot-Git Setup
 1. In Godot, go to Project -> Version Control -> Version Control Settings
 2. In the "username" field, paste in your git username
@@ -44,8 +46,4 @@ git clone https://github.com/bf-bonkus/fbla-game-2024.git
 5. Click apply
 6. Widen the "Inspector" tab until "Commit" is visible
 7. At this point, everything should work. I'd recommend using the pull button (should look like a downwards arrow) to double-check
-8. If you can't press the button, errors pop up, or if the bottom doesn't have something that says "origin":
-9. Click the three dots at the very bottom right and select "Create new Remote"
-10. Name it something like `origin` and set the remote url to `https://github.com/bf-bonkus/fbla-game-2024.git`
-11. Reboot Godot
-12. If it still doesn't work, contact me.
+8. Restart Godot
