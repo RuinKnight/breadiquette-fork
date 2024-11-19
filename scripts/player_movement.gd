@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-# Speed in units/second
-@export var speed = 12000
+# base speed in units/second
+@export var base_speed = 16000
+@export var run_modifier = 1.5
 enum PlayerState {
 	LOCKED,
 	UNLOCKED,
@@ -23,4 +24,6 @@ func player_move(delta: float) -> void:
 		return
 	# Get the direction the player is moving as a Vector2
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = direction.normalized() * speed * delta
+	velocity = direction.normalized() * base_speed * delta
+	if Input.is_action_pressed("run"):
+		velocity *= run_modifier

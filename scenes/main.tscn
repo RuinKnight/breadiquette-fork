@@ -19,7 +19,7 @@ position = Vector2(576, 300)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
-position_smoothing_speed = 0.5
+position_smoothing_speed = 1.0
 script = ExtResource("3_a4j3a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
