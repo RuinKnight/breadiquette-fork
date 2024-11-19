@@ -1,4 +1,4 @@
-# BREADIQUETTE
+# BREADIQUETTE but it's cooler
 This is a game for FBLA's Video Game Challenge Presentation Event.
 ## Installation
 ### Prerequisites
