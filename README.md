@@ -1,5 +1,9 @@
-# BREADIQUETTE but it's cooler
+# BREADIQUETTE
 This is a game for FBLA's Video Game Challenge Presentation Event.
+
+This game was made in Godot 4.3
+
+
 ## Installation
 ### Prerequisites
 #### Install Godot

@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://qyhybf8px5pg"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://qyhybf8px5pg"]
 
 [ext_resource type="Texture2D" uid="uid://bd606843oxuqq" path="res://assets/art/tiles/collide/file_cabinet.png" id="1_nceky"]
 [ext_resource type="Texture2D" uid="uid://ccm1i5mu021kh" path="res://assets/art/tiles/collide/desk.png" id="2_yyqan"]
 [ext_resource type="Texture2D" uid="uid://bfjpxkme3deka" path="res://assets/art/tiles/collide/newall.png" id="3_76uax"]
 [ext_resource type="Texture2D" uid="uid://pieyda6e53xd" path="res://assets/art/tiles/collide/tree.png" id="3_ovbfa"]
 [ext_resource type="Texture2D" uid="uid://bt1jsgy0w4c5" path="res://assets/art/tiles/outlines.png" id="4_ewrgk"]
+[ext_resource type="Texture2D" uid="uid://cwhk8b7ewd62i" path="res://assets/art/tiles/wood.png" id="6_yr58a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ly0tg"]
 
@@ -44,6 +45,17 @@ texture = ExtResource("4_ewrgk")
 0:1/0 = 0
 1:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4vw6o"]
+texture = ExtResource("6_yr58a")
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -24, -8.5, -24)
+2:1/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+2:0/0 = 0
+
 [resource]
 physics_layer_0/collision_layer = 5
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_ly0tg")
@@ -52,3 +64,4 @@ sources/1 = SubResource("TileSetAtlasSource_3bd7g")
 sources/3 = SubResource("TileSetAtlasSource_lym7m")
 sources/4 = SubResource("TileSetAtlasSource_tcmre")
 sources/2 = SubResource("TileSetAtlasSource_15tpc")
+sources/5 = SubResource("TileSetAtlasSource_4vw6o")

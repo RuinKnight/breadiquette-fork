@@ -13,7 +13,9 @@ config_version=5
 config/name="Breadiquette!"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/image="res://assets/splatter.png"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://assets/art/entities/bread_guy.png"
+boot_splash/use_filter=false
 config/icon="res://assets/art/entities/icon.svg"
 
 [audio]
@@ -26,6 +28,8 @@ Globals="*res://globals.gd"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
@@ -48,7 +52,6 @@ import/blender/enabled=false
 [gui]
 
 theme/custom="res://assets/theme.tres"
-theme/custom_font="res://assets/art/SMW.Whole-Pixel.Spacing.otf"
 
 [input]
 

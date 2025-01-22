@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjwc81m0ygg5y"]
+[gd_scene load_steps=13 format=3 uid="uid://bjwc81m0ygg5y"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_akc1x"]
 [ext_resource type="Texture2D" uid="uid://sm5x6lbyfb1g" path="res://assets/art/entities/bread_guy.png" id="2_va8ia"]
 [ext_resource type="Script" path="res://scripts/player_interact.gd" id="3_dqapd"]
 [ext_resource type="Texture2D" uid="uid://k1vdnwj8fw0c" path="res://assets/art/entities/bread_guy_eyes.png" id="4_i0lx4"]
+[ext_resource type="Texture2D" uid="uid://vgk1dq63un3n" path="res://assets/art/interact_button.png" id="5_bemhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ngne"]
-size = Vector2(40, 40)
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbc38"]
-size = Vector2(40, 20)
+size = Vector2(10, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44wdy"]
 atlas = ExtResource("2_va8ia")
@@ -60,16 +61,18 @@ script = ExtResource("3_dqapd")
 shape = SubResource("RectangleShape2D_6ngne")
 debug_color = Color(0, 0.645465, 0.259487, 0.42)
 
+[node name="InteractButton" type="Sprite2D" parent="Interact"]
+position = Vector2(5.5, -5.5)
+texture = ExtResource("5_bemhn")
+
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_lbc38")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_68l8u")
 autoplay = "default"
 frame_progress = 0.565249
 
 [node name="Eyes" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
 texture = ExtResource("4_i0lx4")

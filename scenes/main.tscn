@@ -1,35 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxm08gvmj5a8y"]
+[gd_scene load_steps=5 format=3 uid="uid://dxm08gvmj5a8y"]
 
 [ext_resource type="PackedScene" uid="uid://bjwc81m0ygg5y" path="res://scenes/player.tscn" id="1_oqik1"]
-[ext_resource type="PackedScene" uid="uid://7svnsqggnewj" path="res://scenes/levels/office.tscn" id="1_vc8ej"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_vyqvn"]
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="2_nuiex"]
 [ext_resource type="PackedScene" uid="uid://c6okmg0co3eoq" path="res://scenes/dialogue_ui.tscn" id="3_7fnm8"]
-[ext_resource type="Script" path="res://scripts/player_cam.gd" id="3_a4j3a"]
-[ext_resource type="Script" path="res://scripts/strikes.gd" id="5_huluh"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jrrdj"]
-shadow_color = Color(0, 0, 0, 0.964706)
+[node name="Main" type="Node"]
+script = ExtResource("1_vyqvn")
 
-[node name="Main" type="Node2D"]
-
-[node name="Office" parent="." instance=ExtResource("1_vc8ej")]
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+unique_name_in_owner = true
+position = Vector2(144, 75)
+zoom = Vector2(6, 6)
+position_smoothing_enabled = true
+script = ExtResource("2_nuiex")
+target = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_oqik1")]
 unique_name_in_owner = true
-position = Vector2(576, 300)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-position_smoothing_speed = 1.0
-script = ExtResource("3_a4j3a")
+physics_interpolation_mode = 1
+position = Vector2(144, 75)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueUI" parent="CanvasLayer" instance=ExtResource("3_7fnm8")]
 
-[node name="Strikes" type="Label" parent="CanvasLayer"]
+[node name="LoadingScreen" type="ColorRect" parent="."]
 unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 22.0
-text = "Strikes: [ ] [ ] [ ]"
-label_settings = SubResource("LabelSettings_jrrdj")
-script = ExtResource("5_huluh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)

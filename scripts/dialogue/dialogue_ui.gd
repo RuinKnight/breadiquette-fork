@@ -1,14 +1,14 @@
 extends Control
 
-@export_group("Node Paths")
-@export var button_array: Array[Button]
-
 enum DialogueState {
-	ACTIVE,
-	INACTIVE,
+	ACTIVE, # Displays the UI
+	INACTIVE, # Does not the UI
 }
+# Loads in the current dialogue object (explained in dialogue.gd)
 var working_dialogue: Dialogue.DialogueObject
+# The current text that's being display
 var working_text: int
+# This is a simple manager for whether the dialogue is active
 var state = DialogueState.INACTIVE:
 	set(value):
 		if state != value:
@@ -20,12 +20,17 @@ var state = DialogueState.INACTIVE:
 
 
 func _ready() -> void:
+	# Connects the "set_dialogue" signal to the "set_dialogue()" function
 	Globals.set_dialogue.connect(set_dialogue)
 	visible = false
 
+
 func set_dialogue(dialogue_object: Dialogue.DialogueObject, text: int):
+	# Load in the dialogue object and set the starting text
 	working_dialogue = dialogue_object
 	working_text = text
+	
+	# update the dialogue
 	update_dialogue()
 
 
@@ -34,23 +39,51 @@ func update_dialogue():
 		return
 	if not working_dialogue.item_array.size():
 		return
-	%Options.visible = false
-	%Label.text = working_dialogue.char_name
+	
+	if working_text == -1:
+		state = DialogueState.INACTIVE
+		Globals.interacting = false
+		Globals.dialogue_end.emit(0)
+		return 
+	
+	elif working_dialogue.item_array[working_text].metadata.has("end"):
+		state = DialogueState.INACTIVE
+		Globals.interacting = false
+		Globals.dialogue_end.emit(working_dialogue.item_array[working_text].metadata["end"])
+		return
+	
+	if working_dialogue.item_array[working_text].metadata.has("charname"):
+		working_dialogue.char_name = working_dialogue.item_array[working_text].metadata["charname"]
+	%Title.text = working_dialogue.char_name
+	
+	if working_dialogue.item_array[working_text].metadata.has("score"):
+		Globals.score += working_dialogue.item_array[working_text].metadata["score"]
+	
+	%SpeechNoise.stream = working_dialogue.speech_noise
+	
 	state = DialogueState.ACTIVE
 	%Speech.text = working_dialogue.item_array[working_text].text
 	
-	var working_options = working_dialogue.item_array[working_text].options.keys()
-	for i in button_array:
+	%Options.visible = false
+	for i in %Options.get_children():
 		i.visible = false
-	for i in working_options.size():
-		button_array[i].text = working_options[i]
-		button_array[i].visible = true
+	
+	var working_options = working_dialogue.item_array[working_text].options
+	if working_options.size() == 0:
+		var working_button = %Options.get_child(0)
+		working_button.text = "End"
+		working_button.value = -1
+		working_button.visible = true
+	else:
+		for i in working_options.keys().size():
+			var working_buttons = %Options.get_children()
+			working_buttons[i].text = working_options.keys()[i]
+			working_buttons[i].value = working_options.values()[i]
+			working_buttons[i].visible = true
 	%Options.visible = true
 	
 	# Animates the text, so it appears more smooth
 	await speak(working_text, working_dialogue.char_base_speed)
-	if working_options.size() == 0:
-		state = DialogueState.INACTIVE
 	
 
 
@@ -69,14 +102,7 @@ func speak(start_text: int, speed: float):
 func action_select(button: int):
 	if state != DialogueState.ACTIVE:
 		return
-	# Your guess is as good as mine.
-	working_text = (
-		working_dialogue.item_array[working_text].options[working_dialogue.item_array[working_text].options.keys()[button]]
-	)
-	print()
-	if working_dialogue.item_array[working_text].metadata.get("strike"):
-		Globals.etiquette_strikes += 1
-	elif %Speech.visible_ratio != 1:
-		Globals.etiquette_strikes += 1
-		working_text = working_dialogue.annoy_text
+	
+	working_text = %Options.get_child(button).value
+	
 	update_dialogue()

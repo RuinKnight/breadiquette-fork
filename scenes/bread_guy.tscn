@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dvdwvil34qjvu" path="res://assets/art/dialogue_thumb/fbi_operative_2.png" id="4_llo0y"]
 [ext_resource type="Texture2D" uid="uid://ctfsyslwpsnwp" path="res://assets/art/dialogue_thumb/fbi_operative_1.png" id="5_j0ga0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vpkkn"]
-radius = 104.235
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2cyx"]
+radius = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2q6l3"]
 atlas = ExtResource("3_lywt5")
@@ -41,11 +41,10 @@ script = ExtResource("1_6ti48")
 [node name="InteractableComponent" parent="." instance=ExtResource("2_t56tu")]
 
 [node name="Range" type="CollisionShape2D" parent="InteractableComponent"]
-shape = SubResource("CircleShape2D_vpkkn")
+shape = SubResource("CircleShape2D_r2cyx")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_068qw")
 animation = &"idle"
 autoplay = "idle"

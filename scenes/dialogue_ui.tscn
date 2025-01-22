@@ -2,11 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/dialogue/dialogue_ui.gd" id="1_jq46j"]
 [ext_resource type="AudioStream" uid="uid://d8oewmms1bht" path="res://assets/sound/speech_noise.wav" id="2_bbfgg"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="3_wu740"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_nr6ht"]
-font_size = 24
-
-[node name="DialogueUI" type="Control" node_paths=PackedStringArray("button_array")]
+[node name="DialogueUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,90 +12,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jq46j")
-button_array = [NodePath("Options/Button0"), NodePath("Options/Button1"), NodePath("Options/Button2")]
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 256.0
-offset_top = -256.0
-offset_right = -256.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 32.0
-offset_top = -24.0
-offset_right = 192.0
-offset_bottom = 9.0
-label_settings = SubResource("LabelSettings_nr6ht")
-
-[node name="Speech" type="RichTextLabel" parent="Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -292.0
-offset_top = -40.0
-offset_right = 292.0
-offset_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 16
-scroll_active = false
-
-[node name="Options" type="BoxContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = 68.0
-offset_right = -16.0
-offset_bottom = 260.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 8
-theme_override_constants/separation = 21
-vertical = true
-
-[node name="Button0" type="Button" parent="Options"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_vertical = 0
-text_overrun_behavior = 3
-autowrap_mode = 3
-
-[node name="Button1" type="Button" parent="Options"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_vertical = 4
-text_overrun_behavior = 3
-autowrap_mode = 3
-
-[node name="Button2" type="Button" parent="Options"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_vertical = 8
-text_overrun_behavior = 3
-autowrap_mode = 3
 
 [node name="SpeechNoise" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_bbfgg")
 bus = &"Chiptune"
 
-[connection signal="pressed" from="Options/Button0" to="." method="action_select" binds= [0]]
-[connection signal="pressed" from="Options/Button1" to="." method="action_select" binds= [1]]
-[connection signal="pressed" from="Options/Button2" to="." method="action_select" binds= [2]]
+[node name="Textbox" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 40
+
+[node name="Control" type="VBoxContainer" parent="Textbox"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TitleBox" type="PanelContainer" parent="Textbox/Control"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Name" type="MarginContainer" parent="Textbox/Control/TitleBox"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="Textbox/Control/TitleBox/Name"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Mr. Breadly (isn't deadly)"
+vertical_alignment = 1
+
+[node name="SpeechBox" type="PanelContainer" parent="Textbox/Control"]
+custom_minimum_size = Vector2(1200, 200)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Textbox/Control/SpeechBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="Speech" type="Label" parent="Textbox/Control/SpeechBox/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Yappuccinos are my favorite things in this entire universe"
+autowrap_mode = 3
+
+[node name="Options" type="HBoxContainer" parent="Textbox/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Textbox/Control/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Wow"
+script = ExtResource("3_wu740")
+
+[node name="Button2" type="Button" parent="Textbox/Control/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Waow"
+script = ExtResource("3_wu740")
+
+[node name="Button3" type="Button" parent="Textbox/Control/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Yummycinno"
+script = ExtResource("3_wu740")
+
+[connection signal="pressed" from="Textbox/Control/Options/Button" to="." method="action_select" binds= [0]]
+[connection signal="pressed" from="Textbox/Control/Options/Button2" to="." method="action_select" binds= [1]]
+[connection signal="pressed" from="Textbox/Control/Options/Button3" to="." method="action_select" binds= [2]]

@@ -1,6 +1,14 @@
 extends Area2D
 
 
+func _process(delta: float) -> void:
+	var areas = get_overlapping_areas()
+	if areas and not Globals.interacting:
+		$InteractButton.visible = true
+	else:
+		$InteractButton.visible = false
+	
+
 ## Interaction Engine
 func _input(event):
 	# Check for input
@@ -16,4 +24,5 @@ func _input(event):
 			if distance < closest.global_position.distance_to(global_position):
 				closest = area
 		# Begin interaction
+		Globals.interacting = true
 		closest.interacted.emit()

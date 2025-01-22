@@ -15,3 +15,8 @@ class DialogueItem:
 	var text: String
 	var options: Dictionary
 	var metadata: Dictionary
+		# Metadata Options:
+		# [key]:value
+		# [end]:event_signifier
+		# [charname]:name
+		# [score]:addend/subtractor
