@@ -5,8 +5,10 @@ var current_level: Node
 
 func _ready() -> void:
 	Globals.switch_level.connect(switch_level)
+	# Load Title Screen
+	load_level("res://scenes/title_screen.tscn", false, false)
 	# Load office
-	load_level("res://scenes/levels/office.tscn", true, true)
+	#load_level("res://scenes/levels/office.tscn", true, true)
 	# Load meeting
 	#load_level("res://scenes/meeting/meeting.tscn", false, false)
 

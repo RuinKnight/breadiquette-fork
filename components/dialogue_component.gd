@@ -27,6 +27,7 @@ var current_object = Dialogue.DialogueObject.new()
 @export_multiline var text: Array[String]
 # Responses corresponding to the text array
 @export var options: Array[Dictionary]
+# Various metadata for unique events, see dialogue.gd
 @export var metadata: Array[Dictionary]
 @export_group("Miscellaneous")
 @export var annoy_text: int:
@@ -37,6 +38,7 @@ var current_object = Dialogue.DialogueObject.new()
 
 
 func _ready() -> void:
+	# Aggregate all of the @export variables into a DialogueObject (see dialogue.gd)
 	for i in text.size():
 		var working_item = Dialogue.DialogueItem.new()
 		working_item.text = text[i]
