@@ -10,7 +10,6 @@ script = ExtResource("1_vyqvn")
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 unique_name_in_owner = true
-position = Vector2(144, 75)
 zoom = Vector2(6, 6)
 position_smoothing_enabled = true
 script = ExtResource("2_nuiex")
@@ -30,6 +29,8 @@ unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
