@@ -11,7 +11,7 @@ var current_object = Dialogue.DialogueObject.new()
 	set(value):
 		current_object.char_name = value
 # Speed of the text as a delay in seconds
-@export var character_base_speed: float:
+@export var character_base_speed:= 0.024:
 	get:
 		return current_object.char_base_speed
 	set(value):
