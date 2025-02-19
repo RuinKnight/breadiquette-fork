@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlwmy6oyahkms"]
+[gd_scene load_steps=6 format=3 uid="uid://dlwmy6oyahkms"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_h7wjk"]
 [ext_resource type="Texture2D" uid="uid://cnadi6lxb1702" path="res://assets/title_background.png" id="1_tgm7y"]
+[ext_resource type="AudioStream" uid="uid://bhxxe7bs7uvoe" path="res://assets/sound/music/Breadiquette - Title Theme.wav" id="3_x0i1v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rl3fa"]
 font_size = 200
@@ -73,5 +74,9 @@ text = "Play"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_x0i1v")
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
