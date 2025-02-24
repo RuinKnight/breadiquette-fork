@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ehv8gkw4piv"]
+[gd_scene load_steps=10 format=3 uid="uid://ehv8gkw4piv"]
 
 [ext_resource type="Script" path="res://scenes/meeting/meeting.gd" id="1_xeu4l"]
-[ext_resource type="Texture2D" uid="uid://ctfsyslwpsnwp" path="res://assets/art/dialogue_thumb/fbi_operative_1.png" id="2_0luvk"]
 [ext_resource type="PackedScene" uid="uid://ci88gqwblkmmg" path="res://components/dialogue_component.tscn" id="2_orkw5"]
 [ext_resource type="AudioStream" uid="uid://d8oewmms1bht" path="res://assets/sound/speech_noise.wav" id="3_u65ox"]
 [ext_resource type="Texture2D" uid="uid://d2ys8b0hkgee7" path="res://assets/art/meeting-background.png" id="5_d6dyn"]
 [ext_resource type="Texture2D" uid="uid://dj6r76fy8rkw3" path="res://assets/art/meeting-breadicus.png" id="6_evanf"]
+[ext_resource type="Texture2D" uid="uid://cwn7ndvri8hvs" path="res://assets/art/meeting-khubz.png" id="6_rdpag"]
 [ext_resource type="Texture2D" uid="uid://4j3y32v3nwht" path="res://assets/art/meeting-table.png" id="7_3tr3c"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_74kal"]
-font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_entnk"]
 font_size = 91
@@ -25,58 +22,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xeu4l")
-dialogue_objects = [NodePath("DialogueObjects/Briefings"), NodePath("DialogueObjects/Discussion"), NodePath("DialogueObjects/Offers")]
+dialogue_objects = [NodePath("DialogueObjects/Book"), NodePath("DialogueObjects/Discussion"), NodePath("DialogueObjects/Offers")]
 
 [node name="DialogueObjects" type="Node" parent="."]
 
-[node name="Briefings" parent="DialogueObjects" instance=ExtResource("2_orkw5")]
-character_name = "Breadliam"
+[node name="Book" parent="DialogueObjects" instance=ExtResource("2_orkw5")]
 speech_noise = ExtResource("3_u65ox")
-text = Array[String](["Hello, Breadicus! I'm gonna be supervising you today, so let me know if you need any help.", "Our clients today are coming in from Saudi Arabia. Their etiquette is mostly like ours, however their meetings are less structued.", "It's not too complicated, just make sure to shake hands at the beginning and end, as well as just keep things civil and professional."])
+text = Array[String](["On the table, you see a book titled 
+\"The Compendium of World Etiquettes.\"
+ Read it?", "Stuck in the first page is a note that reads:
+\"Hello Breadicus! This book is here to help you learn the business etiquette of our clients. Today, we have someone coming in from Saudi Arabia.\"", "It reads:
+\"Saudi Arabian business etiquette is much like American etiquette. The most important things are starting and ending meetings with handshakes, keeping discussions civil and professional, and not using your left hand too often.\""])
 options = Array[Dictionary]([{
-"Don't got it.": 0,
-"Got it.": 1
+"No": -1,
+"Yes": 1
 }, {
-"And what is our etiquette?": 2,
-"Okay, thanks!": -1
+"Close Book": -1,
+"Flip to Saudi Arabia chapter": 2
 }, {
-"Alright.": -1,
-"Repeat all of that please": 0
+"Close Book": -1
 }])
 metadata = Array[Dictionary]([{}, {}, {}])
 
 [node name="Discussion" parent="DialogueObjects" instance=ExtResource("2_orkw5")]
+character_name = "Khubz"
 speech_noise = ExtResource("3_u65ox")
-text = Array[String](["Greetings, everyone!", "Breadicus, you gotta make sure to shake their hands first.", "Thank you. Anyway, we're here from Sock Inc. to negotiate funding for the next little while. Shall we get started?", "That's a very bad idea, Breadicus. Let's just move on.", "Unsuprisingly, the sock industry has been on a rise throughout all of history. However, in recent years the demand for specialised socks have increased by a large amount.", "We want 100 loaves to help expand our R&D division to accomodate for all of these new sock types."])
+text = Array[String](["Greetings, everyone!", "*Isn't he gonna shake hands?*", "Thank you. Anyway, I'm here from Sock Inc. to negotiate funding for the next little while. Shall we get started?", "*Why would we talk politics?*", "Unsuprisingly, the sock industry has been on a rise throughout all of history. However, in recent years the demand for specialised socks have increased by a large amount.", " *rude*"])
 options = Array[Dictionary]([{
-"Let's all shake hands.": 2,
-"Let's dive straight in!": 1
+"All right, let's jump in!": 1,
+"[shake hands]": 2
 }, {
-"Oh, right.": 2
+"": 2
 }, {
-"Actually, I think we should talk politics.": 3,
-"Yes, we shall!": 4
+"First, I wanna know your political ideology": 3,
+"Yes.": 4
 }, {
-"Oh, okay.": 4
+"": 4
 }, {
-"Continue": 5
+"Go on...": -1,
+"Why should I care?": 5
 }, {
-"I see.": -1
+"": -1
 }])
-metadata = Array[Dictionary]([{
-"charname": "Salehbread"
-}, {
-"charname": "Breadliam",
-"score": -5
-}, {
-"charname": "Omarbread"
-}, {
-"charname": "Breadliam",
-"score": -5
-}, {
-"charname": "Omarbread"
-}, {
-"charname": "Omarbread"
+metadata = Array[Dictionary]([{}, {
+"score": -1
+}, {}, {
+"score": -2
+}, {}, {
+"score": -4
 }])
 
 [node name="Offers" parent="DialogueObjects" instance=ExtResource("2_orkw5")]
@@ -129,89 +122,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_evanf")
 
-[node name="Salehbread" type="Control" parent="Characters"]
+[node name="Khubz" type="Control" parent="Characters"]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1273.0
-offset_top = 452.0
-offset_right = 1313.0
-offset_bottom = 492.0
-
-[node name="Sprite" type="TextureRect" parent="Characters/Salehbread"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.5
-offset_right = 5.0
-offset_bottom = 5.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(12, 12)
-texture = ExtResource("2_0luvk")
 
-[node name="Label" type="Label" parent="Characters/Salehbread"]
+[node name="Sprite" type="TextureRect" parent="Characters/Khubz"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -10.5357
-anchor_top = -13.9981
-anchor_right = -10.5357
-anchor_bottom = -13.9981
-offset_left = 437.427
-offset_top = 556.926
-offset_right = 556.427
-offset_bottom = 590.926
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Salehbread"
-label_settings = SubResource("LabelSettings_74kal")
-metadata/_edit_use_anchors_ = true
-
-[node name="Omarbread" type="Control" parent="Characters"]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1448.0
-offset_top = 629.0
-offset_right = 1488.0
-offset_bottom = 669.0
-
-[node name="Sprite" type="TextureRect" parent="Characters/Omarbread"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.5
-offset_right = 5.0
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(12, 12)
-texture = ExtResource("2_0luvk")
-
-[node name="Label" type="Label" parent="Characters/Omarbread"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -10.5357
-anchor_top = -13.9981
-anchor_right = -10.5357
-anchor_bottom = -13.9981
-offset_left = 437.427
-offset_top = 556.926
-offset_right = 556.427
-offset_bottom = 590.926
-grow_horizontal = 2
-grow_vertical = 2
-text = "Omarbread"
-label_settings = SubResource("LabelSettings_74kal")
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("6_rdpag")
 
 [node name="Table" type="TextureRect" parent="."]
 layout_mode = 1

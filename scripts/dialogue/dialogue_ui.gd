@@ -55,6 +55,10 @@ func update_dialogue():
 	if working_dialogue.item_array[working_text].metadata.has("charname"):
 		working_dialogue.char_name = working_dialogue.item_array[working_text].metadata["charname"]
 	%Title.text = working_dialogue.char_name
+	if %Title.text == "":
+		%Title.visible = false
+	else:
+		%Title.visible = true
 	
 	if working_dialogue.item_array[working_text].metadata.has("score"):
 		Globals.score += working_dialogue.item_array[working_text].metadata["score"]
@@ -78,6 +82,8 @@ func update_dialogue():
 		for i in working_options.keys().size():
 			var working_buttons = %Options.get_children()
 			working_buttons[i].text = working_options.keys()[i]
+			if working_buttons[i].text == "":
+				working_buttons[i].text = "continue"
 			working_buttons[i].value = working_options.values()[i]
 			working_buttons[i].visible = true
 	%Options.visible = true
