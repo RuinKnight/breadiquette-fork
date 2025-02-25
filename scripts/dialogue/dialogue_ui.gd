@@ -54,11 +54,12 @@ func update_dialogue():
 	
 	if working_dialogue.item_array[working_text].metadata.has("charname"):
 		working_dialogue.char_name = working_dialogue.item_array[working_text].metadata["charname"]
+	
 	%Title.text = working_dialogue.char_name
-	if %Title.text == "":
-		%Title.visible = false
-	else:
-		%Title.visible = true
+	
+	%TitleBox.visible = false
+	if %Title.text:
+		%TitleBox.visible = true
 	
 	if working_dialogue.item_array[working_text].metadata.has("score"):
 		Globals.score += working_dialogue.item_array[working_text].metadata["score"]
