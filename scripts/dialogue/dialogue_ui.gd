@@ -40,17 +40,17 @@ func update_dialogue():
 	if not working_dialogue.item_array.size():
 		return
 	
+	if working_dialogue.item_array[working_text].metadata.has("end"):
+		state = DialogueState.INACTIVE
+		Globals.interacting = false
+		Globals.dialogue_end.emit(working_dialogue.item_array[working_text].metadata["end"])
+		return
+	
 	if working_text == -1:
 		state = DialogueState.INACTIVE
 		Globals.interacting = false
 		Globals.dialogue_end.emit(0)
 		return 
-	
-	elif working_dialogue.item_array[working_text].metadata.has("end"):
-		state = DialogueState.INACTIVE
-		Globals.interacting = false
-		Globals.dialogue_end.emit(working_dialogue.item_array[working_text].metadata["end"])
-		return
 	
 	if working_dialogue.item_array[working_text].metadata.has("charname"):
 		working_dialogue.char_name = working_dialogue.item_array[working_text].metadata["charname"]

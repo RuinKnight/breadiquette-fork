@@ -2,6 +2,7 @@ extends Control
 
 @export var dialogue_objects: Array[Node]
 var step = 0
+var exit_code = 0
 @export var level: int = 0
 
 func _ready() -> void:
@@ -18,23 +19,21 @@ func sequence(step: int, level):
 			%Khubz.visible = true
 			Globals.start_dialogue(dialogue_objects[1].current_object, 0)
 		elif step == 2:
-			print(Globals.score)
 			if Globals.score == 10:
 				Globals.start_dialogue(dialogue_objects[2].current_object, 0)
 				%Evaluation.text = "Perfect!"
 			elif Globals.score > 5:
-				Globals.start_dialogue(dialogue_objects[2].current_object, 1)
+				Globals.start_dialogue(dialogue_objects[2].current_object, 4)
 				%Evaluation.text = "Eh."
 			else:
-				Globals.start_dialogue(dialogue_objects[2].current_object, 2)
+				Globals.start_dialogue(dialogue_objects[2].current_object, 3)
 				%Evaluation.text = "Bad >:("
 		else:
 			%EndCard.visible = true
 	if level == 1:
-		print("waow")
+		print("how the heck did you get here?")
 
 func dialogue_end(condition):
-	if condition:
-		return
+	exit_code = condition
 	step += 1
 	sequence(step, level)

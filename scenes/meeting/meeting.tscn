@@ -47,7 +47,7 @@ metadata = Array[Dictionary]([{}, {}, {}])
 [node name="Discussion" parent="DialogueObjects" instance=ExtResource("2_orkw5")]
 character_name = "Khubz"
 speech_noise = ExtResource("3_u65ox")
-text = Array[String](["Greetings, everyone!", "*Isn't he gonna shake hands?*", "Thank you. Anyway, I'm here from Sock Inc. to negotiate funding for the next little while. Shall we get started?", "*Why would we talk politics?*", "Unsuprisingly, the sock industry has been on a rise throughout all of history. However, in recent years the demand for specialised socks have increased by a large amount.", " *rude*"])
+text = Array[String](["Greetings!", "*Isn't he gonna shake hands?*", "Thank you. Anyway, I'm here from Sock Inc. to negotiate funding for the next little while. Shall we get started?", "*Why would we talk politics?*", "Unsuprisingly, the sock industry has been on a rise throughout all of history. However, in recent years the demand for specialised socks have increased by a large amount.", " *rude*", "Our team is seeking $100k to expand our R&D division."])
 options = Array[Dictionary]([{
 "All right, let's jump in!": 1,
 "[shake hands]": 2
@@ -59,31 +59,39 @@ options = Array[Dictionary]([{
 }, {
 "": 4
 }, {
-"Go on...": -1,
+"Go on...": 6,
 "Why should I care?": 5
 }, {
-"": -1
-}])
+"": 6
+}, {}])
 metadata = Array[Dictionary]([{}, {
 "score": -1
 }, {}, {
 "score": -2
 }, {}, {
 "score": -4
-}])
+}, {}])
 
 [node name="Offers" parent="DialogueObjects" instance=ExtResource("2_orkw5")]
-character_name = "Salehbread"
+character_name = "Khubz"
 speech_noise = ExtResource("3_u65ox")
-text = Array[String](["How does 10% stake sound?", "How does 5% stake sound?", "How does 1% stake sound?", "Sounds good, let's shake on it!"])
+text = Array[String](["What do you want in return?", "That's too much, how about 15%?", "Absolutely, deal!", "You know what? You aren't respecting me or my business, I'm done.", "What do you want in return?", "That's too high. 15% or nothing."])
 options = Array[Dictionary]([{
-"um": 3
+"25%": 1
 }, {
-"erm": 3
-}, {}, {}])
-metadata = Array[Dictionary]([{}, {}, {}, {
-"charname": "Breadliam"
+"No, 23%": 2
+}, {
+"Let's shake on it!": -1
+}, {
+"End": -1
+}, {
+"15%": 2,
+"20%": 5,
+"25%": 5
+}, {
+"Let's shake on it.": -1
 }])
+metadata = Array[Dictionary]([{}, {}, {}, {}, {}, {}])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
